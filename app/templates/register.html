@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Регистрация</h1>
+<form method="post" class="auth-form">
+  <input type="text" name="full_name" placeholder="ФИО" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Пароль (минимум 6 символов)" required />
+  <button type="submit">Создать аккаунт</button>
+</form>
+{% endblock %}

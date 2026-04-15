@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}{{ car.brand }} {{ car.model }}{% endblock %}
+{% block content %}
+<div class="detail">
+  <img src="{{ car.photo_url }}" alt="{{ car.brand }} {{ car.model }}" />
+  <div>
+    <h1>{{ car.brand }} {{ car.model }}</h1>
+    <p>Год: {{ car.year }}</p>
+    <p>Пробег: {{ car.mileage }} км</p>
+    <p>Топливо: {{ car.fuel_type }}</p>
+    <p>Коробка: {{ car.transmission }}</p>
+    <p>{{ car.description }}</p>
+    <h2>${{ car.price }}</h2>
+
+    {% if user %}
+    <form method="post" action="{{ url_for('main.order_car', car_id=car.id) }}" class="order-form">
+      <input type="text" name="phone" placeholder="Телефон" required />
+      <input type="text" name="comment" placeholder="Комментарий" />
+      <button type="submit">Оставить заявку</button>
+    </form>
+    {% else %}
+    <p>Чтобы оставить заявку, <a href="{{ url_for('main.login') }}">войдите</a> в аккаунт.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Мои заявки</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Автомобиль</th>
+      <th>Телефон</th>
+      <th>Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+      <td>{{ order.car.brand }} {{ order.car.model }}</td>
+      <td>{{ order.phone }}</td>
+      <td>{{ order.status }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">Заявок пока нет.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

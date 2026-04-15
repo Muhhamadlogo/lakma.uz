@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Каталог автомобилей{% endblock %}
+{% block content %}
+<h1>Онлайн-магазин автосалона</h1>
+<form class="filters" method="get">
+  <input type="text" name="q" placeholder="Марка или модель" value="{{ request.args.get('q', '') }}" />
+  <select name="brand">
+    <option value="">Все марки</option>
+    {% for b in brands %}
+    <option value="{{ b }}" {% if request.args.get('brand') == b %}selected{% endif %}>{{ b }}</option>
+    {% endfor %}
+  </select>
+  <input type="number" name="max_price" placeholder="Цена до, $" value="{{ request.args.get('max_price', '') }}" />
+  <button type="submit">Найти</button>
+  <a class="secondary" href="{{ url_for('main.seed_data') }}">Заполнить тестовыми данными</a>
+</form>
+
+<div class="card-grid">
+  {% for car in cars %}
+  <article class="card">
+    <img src="{{ car.photo_url }}" alt="{{ car.brand }} {{ car.model }}" />
+    <h3>{{ car.brand }} {{ car.model }}</h3>
+    <p>{{ car.year }} • {{ car.mileage }} км • {{ car.transmission }}</p>
+    <strong>${{ car.price }}</strong>
+    <a href="{{ url_for('main.car_detail', car_id=car.id) }}">Подробнее</a>
+  </article>
+  {% else %}
+  <p>По вашему запросу автомобили не найдены.</p>
+  {% endfor %}
+</div>
+{% endblock %}
