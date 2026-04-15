@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}AutoSalon{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="logo" href="{{ url_for('main.index') }}">AutoSalon Project</a>
+        <nav>
+          <a href="{{ url_for('main.index') }}">Каталог</a>
+          {% if user %}
+          <a href="{{ url_for('main.my_orders') }}">Мои заявки</a>
+            {% if user.is_admin %}
+            <a href="{{ url_for('main.admin_panel') }}">Админка</a>
+            {% endif %}
+          <a href="{{ url_for('main.logout') }}">Выход</a>
+          {% else %}
+          <a href="{{ url_for('main.login') }}">Вход</a>
+          <a href="{{ url_for('main.register') }}">Регистрация</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class="flash-list">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
