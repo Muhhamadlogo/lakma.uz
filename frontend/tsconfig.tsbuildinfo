@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/app/AppRouter.tsx","./src/hooks/useTelegramUser.ts","./src/pages/CartPage.tsx","./src/pages/CatalogPage.tsx","./src/pages/ChatPage.tsx","./src/pages/OrderSummaryPage.tsx","./src/shared/api/client.ts","./src/shared/types/api.ts","./src/telegram/webapp.ts","./src/widgets/ProductCard.tsx"],"version":"5.9.3"}

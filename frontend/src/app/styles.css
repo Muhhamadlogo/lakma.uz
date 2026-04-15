@@ -1,0 +1,21 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color: #101321;
+  background: #f4f6fb;
+}
+body { margin: 0; }
+.layout { max-width: 960px; margin: 0 auto; padding: 16px; }
+.row { display: flex; gap: 8px; align-items: center; }
+.between { justify-content: space-between; }
+.stack { display: grid; gap: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.card { background: white; border-radius: 14px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.card-image { width: 100%; border-radius: 10px; aspect-ratio: 4/3; object-fit: cover; }
+button { background: #2f6bff; color: white; border: 0; border-radius: 10px; padding: 8px 12px; }
+input, textarea { width: 100%; border: 1px solid #d5dced; border-radius: 10px; padding: 8px; }
+.error { color: #bf1f47; }
+.meta { color: #5f6f8d; font-size: 0.85rem; }
+@media (max-width: 640px) {
+  .layout { padding: 12px; }
+  nav.row { flex-wrap: wrap; }
+}
